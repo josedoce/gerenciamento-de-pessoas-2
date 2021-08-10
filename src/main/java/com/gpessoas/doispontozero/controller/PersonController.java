@@ -27,9 +27,13 @@ import lombok.AllArgsConstructor;
 @CrossOrigin(origins = "https://gerenciamento-de-pessoa.herokuapp.com",allowCredentials = "true")
 @RestController
 @RequestMapping("/api/v2/people")
-@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonController {
 	private PersonService personService;
+	
+	@Autowired
+	public PersonController(PersonService personService) {
+		this.personService = personService;
+	}
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
